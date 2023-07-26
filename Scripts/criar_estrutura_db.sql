@@ -1,3 +1,6 @@
+CREATE DATABASE ProjetoDB;
+
+
 CREATE TABLE "Servidor"(
     "matricula" BIGINT NOT NULL,
     "nome" VARCHAR(255) NOT NULL,

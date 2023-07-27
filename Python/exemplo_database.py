@@ -33,18 +33,15 @@ def inserirDados():
 
     connDB = retConexao[1]
 
-
-    print('\nInserindo dados na tabela CATEGORIA')
-    dictCategoria = dict()
-    for categoria in setCategoria:
-        if not categoria: categoria = '------'
-        retorno = insereCategoria(categoria, connDB)
+    print('\nInserindo dados na tabela SETOR_SIAPE')
+    dictSetorSiape = dict()
+    for setorSiape in setSetorSiape:
+        if not setorSiape: setorSiape = '------'
+        retorno = insereSiape(setorSiape, connDB)
         if not retorno[0]:
             print(retorno[1])
             continue
-        dictCategoria[categoria] = retorno[1]
-    
-
+        dictSetorSiape[setorSiape] = retorno[1]
 
     print('\nInserindo dados na tabela CARGO')
     dictCargo = dict()
@@ -77,6 +74,17 @@ def inserirDados():
             print(retorno[1])
             continue
         dictDisciplinaIngresso[disciplinaIngresso] = retorno[1]
+
+    print('\nInserindo dados na tabela CATEGORIA')
+    dictCategoria = dict()
+    for categoria in setCategoria:
+        if not categoria: categoria = '------'
+        retorno = insereCategoria(categoria, connDB)
+        if not retorno[0]:
+            print(retorno[1])
+            continue
+        dictCategoria[categoria] = retorno[1]
+    
 
     print('\nInserindo dados na tabela SETOR_SUAP')
     dictSetorSuap = dict()
@@ -119,37 +127,18 @@ def inserirDados():
         dictCampus[campus] = retorno[1]
 
     print('\nInserindo dados na tabela SERVIDOR')
-    tupleCampos = tuple(['id_categoria'         ,   'id_cargo'      ,  'id_setor'       ,
-                        'id_disciplina'        ,   'id_setor_suap' ,  'nome'           ,
-                        'id_funcao'            ,   'id_jornada'    ,  'telefones'   ,
-                        'matricula_servidor'   ,   'link_lattes'     ,  'id_campus'      ,   
-                        'link_fotos'])
+    tupleCampos = tuple(['categoria'         ,   'cargo'      ,  'setor'       ,
+                        'disciplina'        ,   'setor_suap' ,  'nome'           ,
+                        'funcao'            ,   'jornada_trabalho'    ,  'telefones'   ,
+                        'matricula'   ,   'curriculo_lattes'     ,  'campus'      ,   
+                        'url_foto_75x100'])
 
 
-    for k,v in dados_lidos.items():
-        if dados_lidos[k]['categoria']                  == '': dados_lidos[k]['categoria']                  = '------'
-        if dados_lidos[k]['cargo']                      == '': dados_lidos[k]['cargo']                      = '------'
-        if dados_lidos[k]['setor_siape']                == '': dados_lidos[k]['setor_siape']                = '------'
-        if dados_lidos[k]['disciplina_ingresso']        == '': dados_lidos[k]['disciplina_ingresso']        = '------'
-        if dados_lidos[k]['setor_suap']                 == '': dados_lidos[k]['setor_suap']                 = '------'
-        if dados_lidos[k]['funcao']                     == '': dados_lidos[k]['funcao']                     = '------'
-        if dados_lidos[k]['jornada_trabalho']           == '': dados_lidos[k]['jornada_trabalho']           = '------'
-        if dados_lidos[k]['campus']                     == '': dados_lidos[k]['campus']                     = '------'
-
-        dados_lidos[k]['categoria']                  = dictCategoria[dados_lidos[k]['categoria']]
-        dados_lidos[k]['cargo']                      = dictCargo[dados_lidos[k]['cargo']]
-        dados_lidos[k]['setor_siape']                = dictSetorSiape[dados_lidos[k]['setor_siape']]
-        dados_lidos[k]['disciplina_ingresso']        = dictDisciplinaIngresso[dados_lidos[k]['disciplina_ingresso']]
-        dados_lidos[k]['setor_suap']                 = dictSetorSuap[dados_lidos[k]['setor_suap']]
-        dados_lidos[k]['funcao']                     = dictFuncao[dados_lidos[k]['funcao']]
-        dados_lidos[k]['jornada_trabalho']           = dictJornadaTrabalho[dados_lidos[k]['jornada_trabalho']]
-        dados_lidos[k]['campus']                     = dictCampus[dados_lidos[k]['campus']]
 
 
-        tupleValores = tuple(v.values())
 
-        retorno = insereServidor(tupleCampos, tupleValores, connDB)
+    retorno = insereServidor(tupleCampos, 0, connDB)
 
-        if not retorno[0]: print(retorno[1])
+    if not retorno[0]: print(retorno[1])
 #ENCERRA A CONEXÃO COM O BANCO
     connDB.close()

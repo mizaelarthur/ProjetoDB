@@ -151,7 +151,7 @@ def inserirDados():
         if dados_lidos[k]['jornada_trabalho']           == '': dados_lidos[k]['jornada_trabalho']           = 'Nenhum'
         if dados_lidos[k]['campus']                     == '': dados_lidos[k]['campus']                     = 'Nenhum'
 
-        dados_lidos[k]['categoria']                  = dictCategoria[dados_lidos[k]['categoria']]
+        '''dados_lidos[k]['categoria']                  = dictCategoria[dados_lidos[k]['categoria']]
         dados_lidos[k]['cargo']                      = dictCargo[dados_lidos[k]['cargo']]
         dados_lidos[k]['setor_siape']                = dictSetorSiape[dados_lidos[k]['setor_siape']]
         dados_lidos[k]['disciplina_ingresso']        = dictDisciplinaIngresso[dados_lidos[k]['disciplina_ingresso']]
@@ -159,7 +159,7 @@ def inserirDados():
         dados_lidos[k]['funcao']                     = dictFuncao[dados_lidos[k]['funcao']]
         dados_lidos[k]['jornada_trabalho']           = dictJornadaTrabalho[dados_lidos[k]['jornada_trabalho']]
         dados_lidos[k]['campus']                     = dictCampus[dados_lidos[k]['campus']]
-
+'''
 
         tupleValores = tuple(v.values())
 

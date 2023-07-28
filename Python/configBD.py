@@ -3,6 +3,6 @@
 # Em DB_NAME insira o nome do Banco de Dados
 
 DB_HOST = 'localhost'       
-DB_NAME = 'ProjetoDB'     
+DB_NAME = 'postgres'     
 DB_USER = 'postgres'        
 DB_PASS = '12345' 

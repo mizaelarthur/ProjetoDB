@@ -191,7 +191,7 @@ def insereServidor(campos: tuple, valores: tuple, conexao):
     
     
 #Faz a consulta do tipo de servidores por campus
-def consultaServidoresCampus(conexao):
+def ServidoresPorCampus(conexao):
     consultado = False
     idRetorno = None
     strSQL = 'SELECT * FROM servidores_campus ORDER BY sigla;'
@@ -209,7 +209,7 @@ def consultaServidoresCampus(conexao):
         return consultado, idRetorno
 
 #Faz a consulta de todos os docentes por disciplina
-def consultaDocenteDisciplina(conexao):
+def DocentePorDisciplina(conexao):
     consultado = False
     idRetorno = None
     strSQL = 'SELECT * FROM docentes_disciplinas;'
@@ -227,7 +227,7 @@ def consultaDocenteDisciplina(conexao):
         return consultado, idRetorno
   
 #Faz a consulta da quantidade de docentes por disciplina e por campus    
-def consultaDisciplinaCampus(conexao):
+def qtdDisciplinaPorCampus(conexao):
     consultado = False
     idRetorno = None
     strSQL = 'SELECT * FROM disciplinas_campus ORDER BY sigla;'

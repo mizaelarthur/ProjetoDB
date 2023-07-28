@@ -131,7 +131,39 @@ def inserirDados():
         dictCampus[campus] = retorno[1]
         print(dictCampus)
 
+    
+    #Insere os dados na tabela SERVIDOR
     print('\nInserindo dados na tabela SERVIDOR')
+    tupleCampos = tuple(['categoria'         ,   'cargo'      ,  'setor_siape'       ,
+                        'disciplina'        ,   'setor_suap' ,  'nome'           ,
+                        'funcao'            ,   'jornada_trabalho'    ,  'telefones'   ,
+                        'matricula'   ,   'curriculo_lattes'     ,  'campus'      ,   
+                        'url_fotos'])
+
+
+    for k,v in dados_lidos.items():
+        if dados_lidos[k]['categoria']                  == '': dados_lidos[k]['categoria']                  = '------'
+        if dados_lidos[k]['cargo']                      == '': dados_lidos[k]['cargo']                      = '------'
+        if dados_lidos[k]['setor_siape']                == '': dados_lidos[k]['setor_siape']                = '------'
+        if dados_lidos[k]['disciplina_ingresso']        == '': dados_lidos[k]['disciplina_ingresso']        = '------'
+        if dados_lidos[k]['setor_suap']                 == '': dados_lidos[k]['setor_suap']                 = '------'
+        if dados_lidos[k]['funcao']                     == '': dados_lidos[k]['funcao']                     = '------'
+        if dados_lidos[k]['jornada_trabalho']           == '': dados_lidos[k]['jornada_trabalho']           = '------'
+        if dados_lidos[k]['campus']                     == '': dados_lidos[k]['campus']                     = '------'
+
+        dados_lidos[k]['categoria']                  = dictCategoria[dados_lidos[k]['categoria']]
+        dados_lidos[k]['cargo']                      = dictCargo[dados_lidos[k]['cargo']]
+        dados_lidos[k]['setor_siape']                = dictSetorSiape[dados_lidos[k]['setor_siape']]
+        dados_lidos[k]['disciplina_ingresso']        = dictDisciplinaIngresso[dados_lidos[k]['disciplina_ingresso']]
+        dados_lidos[k]['setor_suap']                 = dictSetorSuap[dados_lidos[k]['setor_suap']]
+        dados_lidos[k]['funcao']                     = dictFuncao[dados_lidos[k]['funcao']]
+        dados_lidos[k]['jornada_trabalho']           = dictJornadaTrabalho[dados_lidos[k]['jornada_trabalho']]
+        dados_lidos[k]['campus']                     = dictCampus[dados_lidos[k]['campus']]
+
+
+        tupleValores = tuple(v.values())
+
+        retorno = insereServidor(tupleCampos, tupleValores, connDB)
 
 
     if not retorno[0]: print(retorno[1])

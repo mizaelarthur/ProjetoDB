@@ -1,10 +1,9 @@
-# Importa SYS para retorar algum erro na leitura do arquivo caso ocorra
+# Importa biblioteca System do Python
 import sys
 # Importa as informações do diretório
 from constantes import *
 
-# Essa função lê o arquivo e separa o cabeçalho e os dados
-# Depois retorna os dados do arquivo para serem inseridos no banco de dados
+# Lendo o Arquivo e separando do cabeçalho
 def lerArquivo(nomeArquivo: str):
     lido = False
     dados_retorno = dict()

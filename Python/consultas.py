@@ -1,40 +1,37 @@
-#Importando os resultados dos dados do código BD
+
 from lib_database import *
 
-#Importando biblioteca pythons System
 import sys
 
 
-# Função para trazer resultado de tipos de servidores, divididos pelos campus de atuação
-def servidoresCampus(conexaoDB):
-    print('\nConsultando tipos de servidores por campus')
-    retorno = ServidoresCampusConsulta(conexaoDB)
+def consultaSC(conexaoDB):
+    print('\nConsultando tipos de servidores por campus\n')
+    retorno = consultaServCampus(conexaoDB)
     if retorno[0] == True:
         for i in retorno[1]:
-            print(f"\nCampus: {i[0]}\n Tipo: {i[1]}\n Quantidade: {i[2]}\n\n")
+            print(f"Campus: {i[0]:5} Tipo de servidor: {i[1]:<25} Quantidade: {i[2]:<1}")
     else:
         print(retorno[0])
         sys.exit()
 
 
-# Função para trazer resultado de docentes, divididos por disciplina de atuação
-def docentesDisciplina(conexaoDB):
-    print('\nConsultando docentes por disciplina')
-    retorno = DocenteDisciplina(conexaoDB)
+def consultaDD(conexaoDB):
+    print('\nConsultando docentes por disciplina\n')
+    retorno = consultaDocenteDisc(conexaoDB)
     if retorno[0] == True:
         for i in retorno[1]:
-            print(f"\nDocente: {i[0]}\n Disciplina: {i[1]}\n\n")
+            print(f"Docente: {i[0]:<45} Disciplina: {i[1]}")
     else:
         print(retorno[0])
         sys.exit()
 
-# Função para trazer resultado de quantidade de servidores por disciplinas
-def DocentesPorDisciplinasECampus(conexaoDB):
-    print('\nConsultando quantidade de docentes por disciplinas e por campus')
-    retorno = DisciplinaCampus(conexaoDB)
+
+def qtdDDC(conexaoDB):
+    print('\nConsultando quantidade de docentes por disciplinas e por campus\n')
+    retorno = consultaDiscCampi(conexaoDB)
     if retorno[0] == True:
         for i in retorno[1]:
-            print(f"\nDisciplina: {i[0]}\n Campus: {i[1]}\n Quantidade: {i[2]}\n\n")
+            print(f"Disciplina: {i[0]:<60} Campus: {i[1]:<5} Quantidade: {i[2]:<1}")
     else:
         print(retorno[0])
         sys.exit()

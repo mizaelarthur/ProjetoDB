@@ -1,42 +1,41 @@
--- Nesse documento iremos criar Views para ajudar nas consultas
-
-
--- Criando a Primeira View
-CREATE VIEW servidorescampus AS
-	SELECT  campus.campus as sigla,
-			categoria.categoria as categoria,
-	 COUNT	(servidor.matricula) AS n_servidores
+CREATE VIEW consultas_servidores_campus AS
+	SELECT  campus.ncampus as sigla,
+			categoria.ncategoria as categoria,
+	 COUNT	(servidor.matricula_servidor) AS qt_servidores
 	  FROM	servidor
 INNER JOIN	campus ON servidor.id_campus = campus.id_campus
 INNER JOIN	categoria ON servidor.id_categoria = categoria.id_categoria
-GROUP BY	campus.campus,
-			categoria.categoria;
-SELECT * FROM servidorescampus ORDER BY sigla;
+GROUP BY	campus.ncampus,
+			categoria.ncategoria;
+SELECT * FROM consultas_servidores_campus ORDER BY sigla;
 
 
--- Criando a Segunda View
-CREATE VIEW docentesdisciplinas AS	
+
+
+
+CREATE VIEW consultas_docentes_disciplinas AS	
 	SELECT	servidor.nome,
-			disciplina_ingresso.disciplina AS disciplina
+			disciplina_ingresso.ndisciplina AS disciplina
   	  FROM	servidor
 INNER JOIN  disciplina_ingresso ON servidor.id_disciplina = disciplina_ingresso.id_disciplina
 INNER JOIN	categoria ON categoria.id_categoria = servidor.id_categoria
-	 WHERE 	categoria.categoria = 'docente'
-  ORDER BY	disciplina_ingresso.disciplina;
-SELECT * FROM docentesdisciplinas;
+	 WHERE 	categoria.ncategoria = 'docente'
+  ORDER BY	disciplina_ingresso.ndisciplina;
+SELECT * FROM consultas_docentes_disciplinas;
 
 
 
--- Criando a Terceira View
-CREATE VIEW disciplinascampus AS	
-	SELECT	disciplina_ingresso.disciplina AS disciplina,
-			campus.campus as sigla,
-	 COUNT	(servidor.matricula) AS n_disciplinas
+
+
+CREATE VIEW consultas_disciplinas_campus AS	
+	SELECT	disciplina_ingresso.ndisciplina AS disciplina,
+			campus.ncampus as sigla,
+	 COUNT	(servidor.matricula_servidor) AS qt_disciplinas
   	  FROM	servidor
 INNER JOIN  disciplina_ingresso ON servidor.id_disciplina = disciplina_ingresso.id_disciplina
 INNER JOIN	categoria ON categoria.id_categoria = servidor.id_categoria
 INNER JOIN	campus ON servidor.id_campus = campus.id_campus
-	 WHERE 	categoria.categoria = 'docente'
-  GROUP BY	disciplina_ingresso.disciplina,
-  			campus.campus;
-SELECT * FROM disciplinascampus ORDER BY sigla;
+	 WHERE 	categoria.ncategoria = 'docente'
+  GROUP BY	disciplina_ingresso.ndisciplina,
+  			campus.ncampus;
+SELECT * FROM consultas_disciplinas_campus ORDER BY sigla;

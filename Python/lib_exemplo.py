@@ -1,9 +1,8 @@
-# Importa biblioteca System do Python
+
 import sys
-# Importa as informações do diretório
+
 from constantes import *
 
-# Lendo o Arquivo e separando do cabeçalho
 def lerArquivo(nomeArquivo: str):
     lido = False
     dados_retorno = dict()

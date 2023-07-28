@@ -14,3 +14,13 @@ GROUP BY	campus.campus,
 SELECT * FROM servidorescampus ORDER BY sigla;
 
 
+-- Criando a Segunda View
+CREATE VIEW docentesdisciplinas AS	
+	SELECT	servidor.nome,
+			disciplina_ingresso.disciplina AS disciplina
+  	  FROM	servidor
+INNER JOIN  disciplina_ingresso ON servidor.id_disciplina = disciplina_ingresso.id_disciplina
+INNER JOIN	categoria ON categoria.id_categoria = servidor.id_categoria
+	 WHERE 	categoria.categoria = 'docente'
+  ORDER BY	disciplina_ingresso.disciplina;
+SELECT * FROM docentesdisciplinas;

@@ -45,3 +45,13 @@ CREATE TABLE setor_siape(
     CONSTRAINT pk_id_setor PRIMARY KEY (id_setor),
     CONSTRAINT un_setor_siape UNIQUE(setor_siape)
 );
+
+
+CREATE TABLE setor_suap(
+    id_setor_suap   SERIAL,
+    setor_suap VARCHAR(15) DEFAULT '------' NOT NULL,
+    CONSTRAINT pk_id_setor_suap PRIMARY KEY (id_setor_suap),
+    CONSTRAINT un_setor_suap UNIQUE(setor_suap)
+);
+
+

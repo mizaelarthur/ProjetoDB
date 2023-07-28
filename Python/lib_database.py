@@ -182,3 +182,14 @@ def insertServidor(campos: tuple, valores: tuple, conexao):
         conexao.commit()
     finally:
         return inserido, idRetorno
+    
+
+
+
+
+
+
+    # =========== CONSULTAS ==============
+
+
+

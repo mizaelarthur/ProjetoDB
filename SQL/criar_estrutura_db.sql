@@ -12,3 +12,10 @@ CREATE TABLE funcao(
     CONSTRAINT pk_id_funcao PRIMARY KEY (id_funcao),
     CONSTRAINT un_nome_funcao UNIQUE(nome_funcao)
 );
+
+CREATE TABLE categoria(
+    id_categoria    SERIAL,
+    nome_categoria  VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria),
+    CONSTRAINT un_nome_categoria UNIQUE(nome_categoria)
+);

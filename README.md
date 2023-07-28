@@ -2,12 +2,13 @@
 ---
   Olá, sejam bem-vindos ao projeto de banco de dados da minha graduação. O projeto consiste em pegar dados em arquivo .csv e atraves disso criar o projeto do banco, bem como sua estrutura.
   Após isso, desenvolver codigos em Python para efetuarem a leitura, armazenamento e coleta desses dados no banco de dados.
-
-  Caso queira entender nosso Projeto Normatizado, basta abri imagens e verificar ;)
-
   nas pastas SQL encontramos os scripts SQL para estrutura do DataBase e em Python todo o nosso código fonte para inserção e consulta no DB.
 
-  ---
+
+### Segue o Modelo Normalizado
+<img src="/imagens/Modelo.png">
+
+---
   ### Pré-requisitos
   1. Baixar e instalar o PostegreSQL(https://www.postgresql.org/download/)
   2. Baixar e instalar o Python (Em windows na Microsoft Store / Em python: apt-get install python3

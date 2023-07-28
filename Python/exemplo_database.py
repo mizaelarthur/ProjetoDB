@@ -6,14 +6,14 @@ from configBD import *
 
 def inserirDados():
     retLeitura  = lerArquivo(APP_DIR + '\\DadosBrutos.csv')
-
+    
     if not retLeitura[0]:
         print(retLeitura[1])
         sys.exit()
 
     print('\nTratando os dados lidos')
     dados_lidos = retLeitura[1]
-
+    
     setCategoria                = set(map(lambda c: c['categoria'], dados_lidos.values()))
     setCargo                    = set(map(lambda c: c['cargo'], dados_lidos.values()))
     setSetorSiape               = set(map(lambda c: c['setor_siape'], dados_lidos.values()))
@@ -35,13 +35,17 @@ def inserirDados():
 
     print('\nInserindo dados na tabela SETOR_SIAPE')
     dictSetorSiape = dict()
+    
     for setorSiape in setSetorSiape:
+        print(setorSiape)
         if not setorSiape: setorSiape = '------'
         retorno = insereSiape(setorSiape, connDB)
         if not retorno[0]:
             print(retorno[1])
             continue
         dictSetorSiape[setorSiape] = retorno[1]
+    connDB.close()
+        
 
     print('\nInserindo dados na tabela CARGO')
     dictCargo = dict()
@@ -125,20 +129,12 @@ def inserirDados():
             print(retorno[1])
             continue
         dictCampus[campus] = retorno[1]
+        print(dictCampus)
 
     print('\nInserindo dados na tabela SERVIDOR')
-    tupleCampos = tuple(['categoria'         ,   'cargo'      ,  'setor'       ,
-                        'disciplina'        ,   'setor_suap' ,  'nome'           ,
-                        'funcao'            ,   'jornada_trabalho'    ,  'telefones'   ,
-                        'matricula'   ,   'curriculo_lattes'     ,  'campus'      ,   
-                        'url_foto_75x100'])
 
-
-
-
-
-    retorno = insereServidor(tupleCampos, 0, connDB)
 
     if not retorno[0]: print(retorno[1])
+    
 #ENCERRA A CONEXÃO COM O BANCO
     connDB.close()

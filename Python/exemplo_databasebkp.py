@@ -136,3 +136,5 @@ def inserirDados():
 #ENCERRA A CONEXÃO COM O BANCO
     connDB.close()
     print("Terminei")
+
+inserirDados()

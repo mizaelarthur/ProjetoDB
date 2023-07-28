@@ -39,3 +39,9 @@ CREATE TABLE campus(
 );
 
 
+CREATE TABLE setor_siape(
+    id_setor    SERIAL,
+    setor_siape  VARCHAR(15) DEFAULT '------' NOT NULL,
+    CONSTRAINT pk_id_setor PRIMARY KEY (id_setor),
+    CONSTRAINT un_setor_siape UNIQUE(setor_siape)
+);

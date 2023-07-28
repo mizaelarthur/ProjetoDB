@@ -14,3 +14,12 @@ CREATE TABLE funcao(
 );
 
 
+CREATE TABLE categoria(
+    id_categoria    SERIAL,
+    categoria  VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria),
+    CONSTRAINT un_categoria UNIQUE(categoria)
+);
+
+
+

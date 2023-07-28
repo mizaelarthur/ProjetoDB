@@ -1,11 +1,14 @@
-
+# Importando a biblioteca sys para nos ajudar com as funções
 import sys
 
+# Importando as funções e váriaveis dos arquivos necessários
 from lib_exemplo import *
 from lib_database import *
 from constantes import *
 from conexao_db import *
 
+
+# Criando a variavel principal que fará solicitara a leitura e inserção dos dados
 def inserir():
     retLeitura  = lerArquivo(APP_DIR + '\\dados.csv')
 
@@ -14,9 +17,13 @@ def inserir():
         print(retLeitura[1])
         sys.exit()
 
+
+    # Leitura Concluida, aqui passamos a tratar os dados afim de evitar repetições
     print('\nTratando os dados lidos')
     dados_lidos = retLeitura[1]
 
+    # Gerando SETS com os dados a serem inseridos nas tabelas 
+    # exceto na tabela SERVIDOR
 
     setCategoria                = set(map(lambda c: c['categoria'], dados_lidos.values()))
     setCargo                    = set(map(lambda c: c['cargo'], dados_lidos.values()))
@@ -38,7 +45,10 @@ def inserir():
 # Armazenna os dados da conexão com o banco
     connDB = retConexao[1]
 
-
+# ==============================================================
+# As linhas a seguir pegam os dados das colunas e inserem nos
+# nos seus respectivos locais no BD, indicados em lib_database
+# ==============================================================
 
     print('\nInserindo dados na tabela CARGO')
     dictCargo = dict()

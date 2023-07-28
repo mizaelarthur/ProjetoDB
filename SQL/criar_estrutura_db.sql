@@ -19,3 +19,10 @@ CREATE TABLE categoria(
     CONSTRAINT pk_id_categoria PRIMARY KEY (id_categoria),
     CONSTRAINT un_nome_categoria UNIQUE(nome_categoria)
 );
+
+CREATE TABLE jornada_trabalho(
+    id_jornada  SERIAL,
+    jornada     VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_id_jornada PRIMARY KEY (id_jornada),
+    CONSTRAINT un_jornada UNIQUE(jornada)
+);

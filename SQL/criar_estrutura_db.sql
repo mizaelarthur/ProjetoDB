@@ -55,3 +55,9 @@ CREATE TABLE setor_suap(
 );
 
 
+CREATE TABLE disciplina_ingresso(
+    id_disciplina   SERIAL,
+    disciplina VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina),
+    CONSTRAINT un_disciplina UNIQUE(disciplina)
+);

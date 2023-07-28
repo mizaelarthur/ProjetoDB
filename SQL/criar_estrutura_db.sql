@@ -23,3 +23,19 @@ CREATE TABLE categoria(
 
 
 
+CREATE TABLE jornada_trabalho(
+    id_jornada  SERIAL,
+    jornada     VARCHAR(255) NOT NULL,
+    CONSTRAINT pk_id_jornada PRIMARY KEY (id_jornada),
+    CONSTRAINT un_jornada UNIQUE(jornada)
+);
+
+
+CREATE TABLE campus(
+    id_campus     SERIAL,
+    campus   VARCHAR(10) NOT NULL,
+    CONSTRAINT pk_id_campus PRIMARY KEY (id_campus),
+    CONSTRAINT un_campus UNIQUE(campus)
+);
+
+

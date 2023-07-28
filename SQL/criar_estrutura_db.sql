@@ -61,3 +61,39 @@ CREATE TABLE disciplina_ingresso(
     CONSTRAINT pk_id_disciplina PRIMARY KEY (id_disciplina),
     CONSTRAINT un_disciplina UNIQUE(disciplina)
 );
+
+
+CREATE TABLE servidor(
+    matricula           BIGINT NOT NULL,
+    nome                VARCHAR(255) NOT NULL,
+    link_fotos          VARCHAR(255) DEFAULT 'Nenhum' NOT NULL,
+    link_lattes         VARCHAR(255) DEFAULT 'Nenhum' NOT NULL,
+    telefones           VARCHAR(255) DEFAULT 'Nenhum' NOT NULL,
+    id_campus           INTEGER NOT NULL,
+    id_cargo            INTEGER NOT NULL,
+    id_setor            INTEGER NOT NULL,
+    id_disciplina       INTEGER NOT NULL,
+    id_setor_suap       INTEGER NOT NULL,
+    id_jornada          INTEGER NOT NULL,
+    id_categoria        INTEGER NOT NULL,
+    id_funcao           INTEGER NOT NULL,
+    
+    CONSTRAINT pk_matricula PRIMARY KEY (matricula),
+  
+    CONSTRAINT fk_servidor_id_funcao FOREIGN KEY (id_funcao)
+                REFERENCES funcao (id_funcao),
+    CONSTRAINT fk_servidor_id_disciplina FOREIGN KEY (id_disciplina)
+                REFERENCES disciplina_ingresso (id_disciplina),
+    CONSTRAINT fk_servidor_id_categoria FOREIGN KEY (id_categoria)
+                REFERENCES categoria (id_categoria),
+    CONSTRAINT fk_servidor_id_cargo FOREIGN KEY (id_cargo)
+                REFERENCES cargo (id_cargo),
+    CONSTRAINT fk_servidor_id_setor FOREIGN KEY (id_setor)
+                REFERENCES setor_siape (id_setor),
+    CONSTRAINT fk_servidor_id_jornada FOREIGN KEY (id_jornada)
+                REFERENCES jornada_trabalho (id_jornada),
+    CONSTRAINT fk_servidor_id_campus FOREIGN KEY(id_campus)
+                REFERENCES campus (id_campus),
+    CONSTRAINT fk_servidor_id_setor_suap FOREIGN KEY (id_setor_suap)
+                REFERENCES setor_suap(id_setor_suap)
+);

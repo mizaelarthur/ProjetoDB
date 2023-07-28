@@ -190,7 +190,7 @@ def insertServidor(campos: tuple, valores: tuple, conexao):
 
 
     # =========== CONSULTAS ==============
-def ServidoresCampus(conexao):
+def ServidoresCampusConsulta(conexao):
     consultado = False
     idRetorno = None
     strSQL = 'SELECT * FROM servidorescampus ORDER BY sigla;'

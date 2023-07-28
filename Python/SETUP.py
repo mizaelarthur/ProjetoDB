@@ -5,6 +5,7 @@ from lib_exemplo import *
 from exemplo_database import *
 from consultas import *
 
+# função principal para execução do nosso menu
 def main():
     retConexao = conectaDB(DB_HOST, DB_NAME, DB_USER, DB_PASS)
 
@@ -14,6 +15,7 @@ def main():
 
     connDB = retConexao[1]
     while True:
+        # Menu para facilitar na navegação e para ajudar a obter as consultas
         print('\n=====================================================================================================\n')
         print('Olá, seja bem-vindo ao nosso SETUP. esse é um ambiente mais amigável para escolhas.')
         print('\nDeseja realizar uma consulta ou cadastro?  (para sair, digite a palavra "sair")')

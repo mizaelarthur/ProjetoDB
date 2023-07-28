@@ -1,7 +1,11 @@
-
+# Importando o sys para nos ajudar com tratamento das funções
 import sys
 
+# Importando as funções e váriaveis do arquivo constantes.py
 from constantes import *
+
+# Função para ler o arquivo e indicado e separa-lo do seu cabeçalho.
+# deixando apenas os dados puros para serem inseridos
 
 def lerArquivo(nomeArquivo: str):
     lido = False

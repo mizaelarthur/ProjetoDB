@@ -190,6 +190,56 @@ def insertServidor(campos: tuple, valores: tuple, conexao):
 
 
     # =========== CONSULTAS ==============
+def ServidoresCampus(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM servidorescampus ORDER BY sigla;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
 
 
 
+def DocenteDisciplina(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM docentesdisciplinas;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno
+
+
+def DisciplinaCampus(conexao):
+    consultado = False
+    idRetorno = None
+    strSQL = 'SELECT * FROM disciplinascampus ORDER BY sigla;'
+    try:
+        cursorTable = conexao.cursor()
+        cursorTable.execute(strSQL)
+    except:
+        conexao.rollback()
+        idRetorno = f'ERRO: {sys.exc_info()[0]} \n{strSQL} \n'
+    else:
+        consultado = True
+        idRetorno = cursorTable.fetchall()
+        conexao.commit()
+    finally:
+        return consultado, idRetorno

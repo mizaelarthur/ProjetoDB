@@ -14,6 +14,14 @@ def conectaDB(server: str, database: str, dbuser: str, userpwd: str):
     finally:
         return conectado, conexao
     
+
+#===============================================================================================
+# As linhas  a seguir são as funções de cada tabela, responsaveis por pegar a informação
+# e armazenar no BD.
+#===============================================================================================
+
+
+
 def inserirCargo(descricao: str, conexao):
     inserido = False
     idRetorno = None
@@ -219,6 +227,16 @@ def inserirServidor(campos: tuple, valores: tuple, conexao):
         conexao.commit()
     finally:
         return inserido, idRetorno
+    
+
+
+
+#===============================================================================================
+# As linhas  a seguir são as 3 consultas ao nosso BD, responsaveis por pegar a informação
+# do BD e trazer para o cliente.
+#===============================================================================================
+
+
 
 def consultaServCampus(conexao):
     consultado = False
